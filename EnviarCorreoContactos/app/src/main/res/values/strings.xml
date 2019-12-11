@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">EnviarCorreoContactos</string>
+    <string name="btBuscar">Buscar</string>
+    <string name="enviar_correo">Enviar email</string>
+    <string name="tituloExplicacion">Permisos para acceder a los contactos</string>
+    <string name="mensajeExplicacion">Se necesitan permisos para poder acceder a los contactos del teléfono y mostrar algunos de los datos</string>
+    <string name="respSi">Sí</string>
+    <string name="respNo">No</string>
+    <string name="noConcedido">Permiso no concedido</string>
+    <string name="contactos">Contactos</string>
+</resources>
