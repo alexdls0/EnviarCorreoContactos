@@ -45,21 +45,31 @@ public class ContactoAdapter extends RecyclerView.Adapter <ContactoAdapter.ItemH
     public void onBindViewHolder(@NonNull final ContactoAdapter.ItemHolder holder, int position) {
         final Contacto contacto = contactosList.get(position);
 
-        if (contacto != null && !contacto.getNombre().equalsIgnoreCase("") &&
-                !contacto.getNumero().equalsIgnoreCase("") &&
-                !contacto.getEmail().equalsIgnoreCase("")){
+        if(contacto.getEmail().equalsIgnoreCase("null")){
+            holder.cl.setClickable(false);
+            holder.cl.setBackgroundColor(miContexto.getResources().getColor(R.color.grey));
             holder.tvNombre.setText(contacto.getNombre());
-            holder.tvTelefono.setText(contacto.getEmail().toString());
-            holder.tvDireccion.setText(""+contacto.getNumero());
+            holder.tvDireccion.setText(contacto.getEmail());
+            holder.tvTelefono.setText(""+contacto.getNumero());
+        }else{
+            if (contacto != null && !contacto.getNombre().equalsIgnoreCase("") &&
+                    !contacto.getNumero().equalsIgnoreCase("") &&
+                    !contacto.getEmail().equalsIgnoreCase("")){
+                holder.tvNombre.setText(contacto.getNombre());
+                holder.tvDireccion.setText(contacto.getEmail());
+                holder.tvTelefono.setText(""+contacto.getNumero());
+            }
+
+            holder.cl.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    direccion = contacto.getEmail();
+                    showPopup(holder.cl);
+                }
+            });
         }
 
-        holder.cl.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                direccion = contacto.getEmail();
-                showPopup(holder.cl);
-            }
-        });
+
     }
 
     @Override
@@ -81,7 +91,6 @@ public class ContactoAdapter extends RecyclerView.Adapter <ContactoAdapter.ItemH
                 this.contactosList.add(contactoList.get(i));
             }
         }
-        Log.v("------n--", this.contactosList.toString());
         notifyDataSetChanged();
     }
 

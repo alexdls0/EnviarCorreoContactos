@@ -156,8 +156,12 @@ public class Contactos extends AppCompatActivity {
         }
 
         for (int i = 0; i < contactosList.size(); i++) {
-            if(!contactosList.get(i).getEmail().equalsIgnoreCase("null")
+            /*if(!contactosList.get(i).getEmail().equalsIgnoreCase("null")
                     && !contactosList.get(i).getNumero().equalsIgnoreCase("null")
+                    && !contactosList.get(i).getNombre().equalsIgnoreCase("null")){
+                contactosFinal.add(contactosList.get(i));
+            }*/
+            if(!contactosList.get(i).getNumero().equalsIgnoreCase("null")
                     && !contactosList.get(i).getNombre().equalsIgnoreCase("null")){
                 contactosFinal.add(contactosList.get(i));
             }
